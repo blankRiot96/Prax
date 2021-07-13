@@ -1,6 +1,24 @@
-QWidget{
-    
+MyWindow{
+    border-image : url(images/gradient.jpeg);
 }
+
 QPushButton{
     background: rgba(100, 100, 100, 0);
+}
+QPushButton:hover{
+    color : rgba(0, 0, 0, 100);
+    background: rgba(200, 200,200, 50);
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 15px;
+    outline: none;
+}
+
+QLineEdit{
+    padding: 1px;
+    color: #fff;
+    background: rgba(0, 0, 0, 100);
+    border-style: solid;
+    border: 2px solid #fff;
+    border-radius: 8px;
 }
