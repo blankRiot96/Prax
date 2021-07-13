@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QIcon
 
@@ -14,13 +14,21 @@ class MyWindow(QMainWindow):
         self.setWindowTitle('Hello World')
         self.InitUI()
 
+        self.photo = QtWidgets.QLabel(self)
+        self.photo.setGeometry(0, 0, 1200, 800)
+        self.photo.setText("")
+        self.photo.setPixmap(QtGui.QPixmap("images/gradient.jpeg"))
+
         self.backward_button = QtWidgets.QPushButton(self)
-        self.backward_button.setIcon(QIcon("icons/backward_arrow_icon.png"))
-        self.backward_button.setGeometry(10, 52, 30, 30)
+        #self.backward_button.setIcon(QIcon("icons/backward_arrow_icon.png"))
+        self.backward_button.setStyleSheet("border-image : url(images/icons/backward_arrow_icon.png);")
+        self.backward_button.setGeometry(10, 52, 40, 40)
 
         self.forward_button = QtWidgets.QPushButton(self)
-        self.forward_button.setIcon(QIcon("icons/forward_arrow_icon.png"))
-        self.forward_button.setGeometry(50, 52, 30, 30)
+        #self.forward_button.setIcon(QIcon("icons/forward_arrow_icon.png"))
+        self.forward_button.setStyleSheet("border-image : url(images/icons/forward_arrow_icon.png);")
+        self.forward_button.setGeometry(60, 52, 40, 40)
+
 
     def InitUI(self):
         self.prax_logo = QtWidgets.QLabel(self)
@@ -49,8 +57,13 @@ class MyWindow(QMainWindow):
 # def clik():
     # print("Clicked")
 
+
+with open('styling.qss', 'r') as f:
+    style = f.read()
+
 def window():
     app = QApplication(sys.argv)
+    app.setStyleSheet(style)
     win = MyWindow()
     win.setGeometry(100, 100, 1200, 800)
     win.setWindowTitle("Prax")
