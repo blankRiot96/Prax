@@ -31,9 +31,16 @@ class ParaxBrowser(QtWidgets.QMainWindow, UI):
         self.rightArrowBtn.clicked.connect(self.forward)
 
     def loadPage(self):
-        url =QtCore.QUrl.fromUserInput(self.addressBar.text())
+        url = QtCore.QUrl.fromUserInput(self.addressBar.text())
+        #  search = str(url)[26:-2]
+        search = self.addressBar.text()
+        search.replace(' ', '+')
+
         if url.isValid():
             self.webEngineView.load(url)
+        else:
+            self.webEngineView.load(QtCore.QUrl('https://www.google.com/search?q=' + search))
+
     
     def forward(self):
         self.webEngineView.page().triggerAction(QWebEnginePage.Forward)
