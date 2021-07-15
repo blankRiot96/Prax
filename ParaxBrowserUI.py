@@ -1,6 +1,7 @@
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class UI(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -15,9 +16,9 @@ class UI(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.mainFrame = QtWidgets.QFrame(self.centralwidget)
         self.mainFrame.setStyleSheet("QFrame#mainFrame {\n"
-"    background-color: rgb(45, 45, 45);\n"
-"    border-radius: 10px; \n"
-"}")
+                                     "    background-color: rgb(45, 45, 45);\n"
+                                     "    border-radius: 10px; \n"
+                                     "}")
         self.mainFrame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.mainFrame.setFrameShadow(QtWidgets.QFrame.Plain)
         self.mainFrame.setLineWidth(0)
@@ -29,7 +30,7 @@ class UI(object):
         self.titleBar = QtWidgets.QFrame(self.mainFrame)
         self.titleBar.setMaximumSize(QtCore.QSize(16777215, 80))
         self.titleBar.setStyleSheet("background-color: none;\n"
-"")
+                                    "")
         self.titleBar.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.titleBar.setFrameShadow(QtWidgets.QFrame.Raised)
         self.titleBar.setObjectName("titleBar")
@@ -78,14 +79,14 @@ class UI(object):
         self.minimizeBtn.setMinimumSize(QtCore.QSize(16, 16))
         self.minimizeBtn.setMaximumSize(QtCore.QSize(17, 17))
         self.minimizeBtn.setStyleSheet("QPushButton {\n"
-"border: none;\n"
-"border-radius: 8px;\n"
-"background-color: rgb(24, 205, 75);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"background-color: rgba(24, 205, 75, 150);\n"
-"}")
+                                       "border: none;\n"
+                                       "border-radius: 8px;\n"
+                                       "background-color: rgb(24, 205, 75);\n"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton:hover {\n"
+                                       "background-color: rgba(24, 205, 75, 150);\n"
+                                       "}")
         self.minimizeBtn.setText("")
         self.minimizeBtn.setObjectName("minimizeBtn")
         self.horizontalLayout_2.addWidget(self.minimizeBtn)
@@ -93,14 +94,14 @@ class UI(object):
         self.maximizeBtn.setMinimumSize(QtCore.QSize(16, 16))
         self.maximizeBtn.setMaximumSize(QtCore.QSize(17, 17))
         self.maximizeBtn.setStyleSheet("QPushButton {\n"
-"border: none;\n"
-"border-radius: 8px;\n"
-"    background-color: rgb(254, 195, 68);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"background-color: rgba(254, 195, 68, 150);\n"
-"}")
+                                       "border: none;\n"
+                                       "border-radius: 8px;\n"
+                                       "    background-color: rgb(254, 195, 68);\n"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton:hover {\n"
+                                       "background-color: rgba(254, 195, 68, 150);\n"
+                                       "}")
         self.maximizeBtn.setText("")
         self.maximizeBtn.setObjectName("maximizeBtn")
         self.horizontalLayout_2.addWidget(self.maximizeBtn)
@@ -108,14 +109,14 @@ class UI(object):
         self.closeBtn.setMinimumSize(QtCore.QSize(16, 16))
         self.closeBtn.setMaximumSize(QtCore.QSize(17, 17))
         self.closeBtn.setStyleSheet("QPushButton {\n"
-"border: none;\n"
-"border-radius: 8px;\n"
-"background-color: rgb(255, 82, 85);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"background-color: rgba(255, 82, 85, 100);\n"
-"}")
+                                    "border: none;\n"
+                                    "border-radius: 8px;\n"
+                                    "background-color: rgb(255, 82, 85);\n"
+                                    "}\n"
+                                    "\n"
+                                    "QPushButton:hover {\n"
+                                    "background-color: rgba(255, 82, 85, 100);\n"
+                                    "}")
         self.closeBtn.setText("")
         self.closeBtn.setObjectName("closeBtn")
         self.horizontalLayout_2.addWidget(self.closeBtn)
@@ -137,18 +138,18 @@ class UI(object):
         font.setPointSize(13)
         self.leftArrowBtn.setFont(font)
         self.leftArrowBtn.setStyleSheet("QPushButton {\n"
-"    color: rgba(172, 172, 172, 255);\n"
-"    border: none;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    color: rgba(172, 172, 172, 100);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    padding-left: 2px;\n"
-"    padding-top: 2px;\n"
-"}")
+                                        "    color: rgba(172, 172, 172, 255);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "\n"
+                                        "QPushButton:hover {\n"
+                                        "    color: rgba(172, 172, 172, 100);\n"
+                                        "}\n"
+                                        "\n"
+                                        "QPushButton:pressed {\n"
+                                        "    padding-left: 2px;\n"
+                                        "    padding-top: 2px;\n"
+                                        "}")
         self.leftArrowBtn.setObjectName("leftArrowBtn")
         self.horizontalLayout_5.addWidget(self.leftArrowBtn)
         self.rightArrowBtn = QtWidgets.QPushButton(self.bottomFrame)
@@ -159,18 +160,18 @@ class UI(object):
         font.setPointSize(13)
         self.rightArrowBtn.setFont(font)
         self.rightArrowBtn.setStyleSheet("QPushButton {\n"
-"    color: rgba(172, 172, 172, 255);\n"
-"    border: none;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    color: rgba(172, 172, 172, 100);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    padding-left: 2px;\n"
-"    padding-top: 2px;\n"
-"}")
+                                         "    color: rgba(172, 172, 172, 255);\n"
+                                         "    border: none;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:hover {\n"
+                                         "    color: rgba(172, 172, 172, 100);\n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:pressed {\n"
+                                         "    padding-left: 2px;\n"
+                                         "    padding-top: 2px;\n"
+                                         "}")
         self.rightArrowBtn.setObjectName("rightArrowBtn")
         self.horizontalLayout_5.addWidget(self.rightArrowBtn)
         self.reloadBtn = QtWidgets.QPushButton(self.bottomFrame)
@@ -181,18 +182,18 @@ class UI(object):
         font.setPointSize(12)
         self.reloadBtn.setFont(font)
         self.reloadBtn.setStyleSheet("QPushButton {\n"
-"    color: rgba(172, 172, 172, 255);\n"
-"    border: none;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    color: rgba(172, 172, 172, 100);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    padding-left: 2px;\n"
-"    padding-top: 2px;\n"
-"}")
+                                     "    color: rgba(172, 172, 172, 255);\n"
+                                     "    border: none;\n"
+                                     "}\n"
+                                     "\n"
+                                     "QPushButton:hover {\n"
+                                     "    color: rgba(172, 172, 172, 100);\n"
+                                     "}\n"
+                                     "\n"
+                                     "QPushButton:pressed {\n"
+                                     "    padding-left: 2px;\n"
+                                     "    padding-top: 2px;\n"
+                                     "}")
         self.reloadBtn.setObjectName("reloadBtn")
         self.horizontalLayout_5.addWidget(self.reloadBtn)
         self.addressBar = QtWidgets.QLineEdit(self.bottomFrame)
@@ -203,11 +204,11 @@ class UI(object):
         font.setPointSize(9)
         self.addressBar.setFont(font)
         self.addressBar.setStyleSheet("QLineEdit#addressBar {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    color: rgb(200, 200, 200);\n"
-"    border-radius: 10px;\n"
-"    border: none;\n"
-"}")
+                                      "    background-color: rgb(60, 60, 60);\n"
+                                      "    color: rgb(200, 200, 200);\n"
+                                      "    border-radius: 10px;\n"
+                                      "    border: none;\n"
+                                      "}")
         self.addressBar.setObjectName("addressBar")
         self.horizontalLayout_5.addWidget(self.addressBar)
         self.verticalLayout_3.addWidget(self.bottomFrame)
@@ -225,7 +226,8 @@ class UI(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ParaxBrowser"))
-        self.browserName.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">                ParaxBrowser</p></body></html>"))
+        self.browserName.setText(_translate("MainWindow",
+                                            "<html><head/><body><p align=\"center\">                ParaxBrowser</p></body></html>"))
         self.minimizeBtn.setToolTip(_translate("MainWindow", "<html><head/><body><p>Minimize</p></body></html>"))
         self.maximizeBtn.setToolTip(_translate("MainWindow", "<html><head/><body><p>Maximize</p></body></html>"))
         self.closeBtn.setToolTip(_translate("MainWindow", "<html><head/><body><p>Close</p></body></html>"))

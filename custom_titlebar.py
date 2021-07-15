@@ -1,6 +1,7 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+from PyQt5 import QtWidgets
 import sys
 
 # 
@@ -143,6 +144,7 @@ class TitleWidget(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.sizegrip = QtWidgets.QSizeGrip(self)
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowMinimizeButtonHint)
         self.resize(800, 600)
         AllWidget = QWidget()
@@ -173,6 +175,12 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(AllWidget)
         self.setStyleSheet(Qss)
 
+    def resizeEvent(self, event) -> None:
+            self.sizegrip.move(self.width() - 15, self.height() - 15)
+
+    def mousePressEvent(self, e):
+        self.window().windowHandle().startSystemMove()
+
     def ButtonMinSlot(self):
         self.showMinimized()
 
@@ -197,25 +205,32 @@ class MainWindow(QMainWindow):
     def ButtonCloseSlot(self):
         self.close()
 
-    def paintEvent(self, event):
-        self.title.setFixedWidth(self.width())
+    # def paintEvent(self, event):
+    #     self.title.setFixedWidth(self.width())
 
-    def mousePressEvent(self, event):
-        if event.button()==Qt.LeftButton:
-            self.m_flag=True
-            self.m_Position=event.globalPos()-self.pos() #Get the position of the mouse relative to the window
-            event.accept()
-            self.setCursor(QCursor(Qt.OpenHandCursor)) #Change the mouse icon
+    # def mousePressEvent(self, event):
+    #     if event.button()==Qt.LeftButton:
+    #         self.m_flag=True
+    #         self.m_Position=event.globalPos()-self.pos() #Get the position of the mouse relative to the window
+    #         event.accept()
+    #         self.setCursor(QCursor(Qt.OpenHandCursor)) #Change the mouse icon
             
-    def mouseMoveEvent(self, QMouseEvent):
-        if Qt.LeftButton and self.m_flag:  
-            self.move(QMouseEvent.globalPos()-self.m_Position)#Change window position
-            QMouseEvent.accept()
+    # def mouseMoveEvent(self, QMouseEvent):
+    #     if Qt.LeftButton and self.m_flag:  
+    #         self.move(QMouseEvent.globalPos()-self.m_Position)#Change window position
+    #         QMouseEvent.accept()
             
-    def mouseReleaseEvent(self, QMouseEvent):
-        self.m_flag=False
-        self.setCursor(QCursor(Qt.ArrowCursor))
+    # def mouseReleaseEvent(self, QMouseEvent):
+    #     self.m_flag=False
+    #     self.setCursor(QCursor(Qt.ArrowCursor))
 
+class BaseWindow(QtWidgets.QWidget):
+    def __init__(self):
+        super(BaseWindow, self).__init__()
+        self.sizegrip = QtWidgets.QSizeGrip(self)
+
+    def resizeEvent(self, event) -> None:
+        self.sizegrip.move(self.width() - 15, self.height() - 15) # keep the qsizegrip at the bottom right corner when resizing
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
