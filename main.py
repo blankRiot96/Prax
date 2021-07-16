@@ -1,77 +1,41 @@
-from PyQt5 import QtWidgets, QtGui, QtCore
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTabWidget, QWidget
-from PyQt5.QtGui import QIcon
-
+from PyQt5.QtWebEngineWidgets import QWebEnginePage
+from PyQt5 import QtCore, QtWidgets
+from PraxBrowserUI import UI
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 import sys
 
-class MyWindow(QMainWindow):
+
+class ParaxBrowser(QtWidgets.QMainWindow, UI):
     def __init__(self):
-        super(MyWindow, self).__init__()
+        super(ParaxBrowser, self).__init__()
+        self.setupUi(self)
 
-        self.count = 0
+        self.addressBar.returnPressed.connect(self.loadPage)
 
-        self.setGeometry(100, 100, 300, 300)
-        self.setWindowTitle('Hello World')
-        self.InitUI()
+    def loadPage(self):
+        url = QtCore.QUrl.fromUserInput(self.addressBar.text())
+        search = self.addressBar.text()
+        search.replace(' ', '+')
+        if url.isValid():
+            self.webEngineView.load(url)
+        else:
+            self.webEngineView.load(QtCore.QUrl(
+                f'https://www.google.com/search?q={search}'))
 
+    def forward(self):
+        self.webEngineView.page().triggerAction(QWebEnginePage.Forward)
 
-        # self.photo = QtWidgets.QLabel(self)
-        # self.photo.setGeometry(0, 0, 1200, 800)
-        # self.photo.setText("")
-        # self.photo.setPixmap(QtGui.QPixmap("images/gradient.jpeg"))
+    def backward(self):
+        self.webEngineView.page().triggerAction(QWebEnginePage.Back)
 
-        self.backward_button = QtWidgets.QPushButton(self)
-        #self.backward_button.setIcon(QIcon("icons/backward_arrow_icon.png"))
-        self.backward_button.setStyleSheet("border-image : url(images/icons/backward_arrow_icon.png);")
-        self.backward_button.setGeometry(10, 52, 25, 25)
-
-        self.forward_button = QtWidgets.QPushButton(self)
-        #self.forward_button.setIcon(QIcon("icons/forward_arrow_icon.png"))
-        self.forward_button.setStyleSheet("border-image : url(images/icons/forward_arrow_icon.png);")
-        self.forward_button.setGeometry(60, 52, 25, 25)
-
-
-    def InitUI(self):
-        self.prax_logo = QtWidgets.QLabel(self)
-        self.prax_logo.setText("Prax Logo")
-        self.prax_logo.move(550, 300)
-        self.prax_logo.setStyleSheet("QLabel { color : blue; }")
-
-        self.url_bar = QtWidgets.QLineEdit(self)
-        self.url_bar.setGeometry(100, 50, 1000, 25)
-
-        # self.b1 = QtWidgets.QPushButton(self)
-        # self.b1.setText("Click me!")
-        # self.b1.move(100, 100)
-        # self.b1.clicked.connect(self.changeText)
-
-    # def changeText(self):
-        # self.label.setText(f'Changed Text {self.count}')
-        # self.update()
-        # self.count += 1
-
-    # def update(self):
-        # self.label.adjustSize()
+    def reload(self):
+        self.webEngineView.page().triggerAction(QWebEnginePage.Reload)
 
 
-
-# def clik():
-    # print("Clicked")
-
-
-with open('styling.qss', 'r') as f:
-    style = f.read()
-
-def window():
+if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setStyleSheet(style)
-    win = MyWindow()
-    win.setGeometry(100, 100, 1200, 800)
-    win.setWindowTitle("Prax")
-
-
-
-    win.show()
-    sys.exit(app.exec_())
-
-window()
+    Window = ParaxBrowser()
+    Window.show()
+    app.exec_()
