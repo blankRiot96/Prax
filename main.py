@@ -11,8 +11,32 @@ class ParaxBrowser(QtWidgets.QMainWindow, UI):
     def __init__(self):
         super(ParaxBrowser, self).__init__()
         self.setupUi(self)
-
         self.addressBar.returnPressed.connect(self.loadPage)
+
+        # Menu Bar Setup
+        self.menuBar_active = True
+        self.menuBar = QMenuBar()
+
+        # Creating menus ( like the order of FireFox )
+        # Needs to add "actions" for every menu
+        file_menu = QMenu("&File", self)  # self.menuBar.addMenu("&File")
+        edit_menu = QMenu("&Edit", self)
+        view_menu = QMenu("&View", self)
+        history_menu = QMenu("&History", self)
+        bookmarks_menu = QMenu("&Bookmarks", self)
+        tools_menu = QMenu("&Tools", self)
+        help_menu = QMenu("&Help", self)
+
+        # Adding menu bar
+        self.menuBar.addMenu(file_menu)
+        self.menuBar.addMenu(edit_menu)
+        self.menuBar.addMenu(view_menu)
+        self.menuBar.addMenu(history_menu)
+        self.menuBar.addMenu(bookmarks_menu)
+        self.menuBar.addMenu(tools_menu)
+        self.menuBar.addMenu(help_menu)
+
+        self.setMenuBar(self.menuBar)
 
     def loadPage(self):
         url = QtCore.QUrl.fromUserInput(self.addressBar.text())
@@ -33,31 +57,15 @@ class ParaxBrowser(QtWidgets.QMainWindow, UI):
     def reload(self):
         self.webEngineView.page().triggerAction(QWebEnginePage.Reload)
 
-    # Menu Bar Setup
-    self.menuBar_active = True
-    menuBar = self.menuBar()
-        
-        # Creating menus ( like the order of FireFox )
-    # Needs to add "actions" for every menu
-    file_menu = menuBar.addMenu("&File")
-    edit_menu = menuBar.addMenu("&Edit")
-    view_menu = menuBar.addMenu("&View")
-    history_menu = menuBar.addMenu("&History")
-    bookmarks_menu = menuBar.addMenu("&Bookmarks")
-    tools_menu = menuBar.addMenu("&Tools")
-    help_menu = menuBar.addMenu("&Help") 
     # Connecting "alt" key to this ^ function
-
-    def hide_show_menu_bar(self, menuBar, menuBar_active):
-        if(menuBar_active == True):
-            menuBar.hide()
+    def hide_show_menu_bar(self):
+        if self.menuBar_active:
+            self.menuBar.hide()
             self.menuBar_active = False
             print("here 1")
         else:
-            menuBar.show()
+            self.menuBar.show()
             self.menuBar_active = True
-
-
 
 
 if __name__ == '__main__':
