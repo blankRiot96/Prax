@@ -33,6 +33,32 @@ class ParaxBrowser(QtWidgets.QMainWindow, UI):
     def reload(self):
         self.webEngineView.page().triggerAction(QWebEnginePage.Reload)
 
+    # Menu Bar Setup
+    self.menuBar_active = True
+    menuBar = self.menuBar()
+        
+        # Creating menus ( like the order of FireFox )
+    # Needs to add "actions" for every menu
+    file_menu = menuBar.addMenu("&File")
+    edit_menu = menuBar.addMenu("&Edit")
+    view_menu = menuBar.addMenu("&View")
+    history_menu = menuBar.addMenu("&History")
+    bookmarks_menu = menuBar.addMenu("&Bookmarks")
+    tools_menu = menuBar.addMenu("&Tools")
+    help_menu = menuBar.addMenu("&Help") 
+    # Connecting "alt" key to this ^ function
+
+    def hide_show_menu_bar(self, menuBar, menuBar_active):
+        if(menuBar_active == True):
+            menuBar.hide()
+            self.menuBar_active = False
+            print("here 1")
+        else:
+            menuBar.show()
+            self.menuBar_active = True
+
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
